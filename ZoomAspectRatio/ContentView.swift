@@ -9,8 +9,14 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var zoomed = false
     var body: some View {
-        Text("Hello, World!")
+        Image("dims")
+        .resizable()
+            .aspectRatio(contentMode: zoomed ? .fill : .fit)
+            .onTapGesture {
+                self.zoomed.toggle()
+        }.animation(.easeInOut)
     }
 }
 
